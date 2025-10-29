@@ -1,0 +1,42 @@
+NRMSE     ./results/results_output_rt_RT_32  0.04137769984463114
+NRMSE_MASK./results/results_output_rt_RT_32  0.04465618143321435
+NRMSE     ./results/results_output_real_RT_32  0.07307056172524563
+NRMSE_MASK./results/results_output_real_RT_32  0.11125116801028587
+NRMSE     ./results/results_output_imag_RT_32  0.07318933563938047
+NRMSE_MASK./results/results_output_imag_RT_32  0.11175402754646109
+NRMSE     ./results/results_output_rt_RT_withoutskip_32  0.04614770720829521
+NRMSE_MASK./results/results_output_rt_RT_withoutskip_32  0.07796736209553025
+NRMSE     ./results/results_output_real_RT_withoutskip_32  0.07901509161799361
+NRMSE_MASK./results/results_output_real_RT_withoutskip_32  0.12290320279590514
+NRMSE     ./results/results_output_imag_RT_withoutskip_32  0.07872534290870221
+NRMSE_MASK./results/results_output_imag_RT_withoutskip_32  0.12550137437620226
+NRMSE     ./results/results_output_rt_RT_U_Net_32  0.15492663974784318
+NRMSE_MASK./results/results_output_rt_RT_U_Net_32  0.15492663974784318
+NRMSE     ./results/results_output_real_RT_U_Net_32  0.09515844316576462
+NRMSE_MASK./results/results_output_real_RT_U_Net_32  0.1459757736901645
+NRMSE     ./results/results_output_imag_RT_U_Net_32  0.09534084983164501
+NRMSE_MASK./results/results_output_imag_RT_U_Net_32  0.1465931936298381
+NRMSE     ./results/results_output_rt_RT_VAE_32  0.14815435844595104
+NRMSE_MASK./results/results_output_rt_RT_VAE_32  0.1489585670029188
+NRMSE     ./results/results_output_real_RT_VAE_32  0.16506064060440426
+NRMSE_MASK./results/results_output_real_RT_VAE_32  0.49306809067991975
+NRMSE     ./results/results_output_imag_RT_VAE_32  0.1654847463058178
+NRMSE_MASK./results/results_output_imag_RT_VAE_32  0.4913060305358975
+NRMSE     ./results/results_output_rt_RT_DeepLab_32  0.26096941627629416
+NRMSE_MASK./results/results_output_rt_RT_DeepLab_32  0.26097309684405673
+NRMSE     ./results/results_output_real_RT_DeepLab_32  0.16505976500774006
+NRMSE_MASK./results/results_output_real_RT_DeepLab_32  0.4848418330361403
+NRMSE     ./results/results_output_imag_RT_DeepLab_32  0.16548437451182865
+NRMSE_MASK./results/results_output_imag_RT_DeepLab_32  0.48540645047707126
+NRMSE     ./results/results_output_rt_RT_ViT_32  0.14602748076331015
+NRMSE_MASK./results/results_output_rt_RT_ViT_32  0.14692640590561604
+NRMSE     ./results/results_output_real_RT_ViT_32  0.1650606650943535
+NRMSE_MASK./results/results_output_real_RT_ViT_32  0.49257027402243847
+NRMSE     ./results/results_output_imag_RT_ViT_32  0.16548477496477598
+NRMSE_MASK./results/results_output_imag_RT_ViT_32  0.49081283677649823
+NRMSE     ./results/results_output_rt_U_Net_32  0.08365876724323938
+NRMSE_MASK./results/results_output_rt_U_Net_32  0.09353255858037084
+NRMSE     ./results/results_output_real_U_Net_32  0.10345451274501344
+NRMSE_MASK./results/results_output_real_U_Net_32  0.153746017237878
+NRMSE     ./results/results_output_imag_U_Net_32  0.10391836368924913
+NRMSE_MASK./results/results_output_imag_U_Net_32  0.15628267153887127
