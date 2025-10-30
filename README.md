@@ -1,17 +1,26 @@
 # Temporal–Spatial Wavefront Sequence and EMPhyNet
 
 ## Introduction
-In wireless communications, interactions of electromagnetic (EM) waves with environmental scatterers lead to multipath propagation, which underpins the spatial multiplexing capabilities of advanced technologies such as large-scale Multiple-Input Multiple-Output (MIMO), beamforming, and Reconfigurable Intelligent Surfaces (RIS). To characterize the intricate spatiotemporal dynamics, we introduce the Temporal–Spatial Wavefront Sequence (TSWS) to represent the spatial Channel Impulse Response (CIR) and construct a large-scale TSWS simulation dataset spanning 1,075 real-world environments via Ray Tracing (RT), providing a unified foundation for comprehensive channel modeling and transmission research. Moreover, leveraging first-principles physics, we embed Finite Difference Time Domain (FDTD) iterative framework, a full-wave method for solving Maxwell’s equations, into our proposed EM Physics-Informed Network (EMPhyNet), directly simulating TSWS. The EMPhyNet effectively learns spatial propagation patterns such as direct paths, reflections, amplitude decay, and phase variations, achieving NRMSE and improved masked NRMSE of approximately 0.073 and 0.11. Evaluation of variant models shows that those without explicit Maxwell propagation priors fail to capture meaningful signal features. Together, TSWS and EMPhyNet integrate physics principles with deep learning to accurately reconstruct both amplitude and phase, enabling high-fidelity spatial wireless channel characterization for next-generation communication systems.
-
+In wireless communications, interactions of electromagnetic (EM) waves with environmental scatterers lead to multipath propagation, which underpins the spatial multiplexing capabilities of advanced technologies such as large-scale Multiple-Input Multiple-Output (MIMO), beamforming, and Reconfigurable Intelligent Surfaces (RIS). 
+<br>
+<br>
+To characterize the intricate spatiotemporal dynamics, we introduce the Temporal–Spatial Wavefront Sequence (TSWS) to represent the spatial Channel Impulse Response (CIR) and construct a large-scale TSWS simulation dataset spanning 1,075 real-world environments via Ray Tracing (RT), providing a unified foundation for comprehensive channel modeling and transmission research. 
+<br>
 <br>
 <div>
 <img src="Figs/CIR_TO_Image.jpg" width="700px">
 </div>
-  <br>
+<br>
+<br>
+Moreover, leveraging first-principles physics, we embed Finite Difference Time Domain (FDTD) iterative framework, a full-wave method for solving Maxwell’s equations, into our proposed EM Physics-Informed Network (EMPhyNet), directly simulating TSWS. The EMPhyNet effectively learns spatial propagation patterns such as direct paths, reflections, amplitude decay, and phase variations, achieving NRMSE and improved masked NRMSE of approximately 0.073 and 0.11. Evaluation of variant models shows that those without explicit Maxwell propagation priors fail to capture meaningful signal features.
+<br>
+<br>
 <div>
 <img src="Figs/Architecture.jpg" width="750px">
 </div>
 <br>
+<br>
+Together, TSWS and EMPhyNet integrate physics principles with deep learning to accurately reconstruct both amplitude and phase, enabling high-fidelity spatial wireless channel characterization for next-generation communication systems.
 
 ## Requirements
 
@@ -30,19 +39,21 @@ Linux + python>=3.8 + pytorch(GPU)
 While the code is theoretically compatible with Windows, we highly recommend running it on a Linux system to ensure consistent results.
 
 ## Datasets and Pretrained models
-- There are only two examples here, please download more data from [here](https://drive.google.com/drive/folders/1rOjZoe6gM9DRt03JC5UouguWeE6HedLi?usp=drive_link).
+- There are only two examples here, please download all data from [here](XXXXXXXXXXXXXXXXXX).
 
-Building information obtained from [OpenStreetMap](https://www.openstreetmap.org/). The labels are constructed by [Ray Tracing of Matlab](https://www.mathworks.com/help/comm/ref/rfprop.raytracing.html). 
+Scenarios information obtained from [OpenStreetMap](https://www.openstreetmap.org/). The TSWS are constructed by [Ray Tracing of Matlab](https://www.mathworks.com/help/comm/ref/rfprop.raytracing.html). 
 
-Please unzip `data.zip` and put the data `input`, `output_32`,and `output_overlap_32` in `./data` folder.
+Please unzip `data.zip` and put the folders `input`, `output_rt_32`, 'output_real_32',and `output_imag_32` in `./data`.
 
-Please put Pretrained models `PIDRTN.pth`, `PIDRTN-A.pth`,and `U-net.pth` in `./results/checkpoints_ddp` folder.
+Please unzip `matlab.zip` and put the folders `data`, `map_data`, and 'map_height' in `./matlab`.
+
+Please unzip `results.zip` and put all 22 folders in `./results`.
 
 ## Run
 
-Please refer to  `./run.sh` for training and testing.
+Please refer to  `./run.sh` and `./main.py` for training and testing.
 
-Please refer to  `./ResultsVisualization.py` for visualization.
+Please refer to  `./Visualization_and_MSE.py` for visualization and MSE calculation.
 
 ## Results
 
