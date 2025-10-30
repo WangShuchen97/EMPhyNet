@@ -39,7 +39,7 @@ Linux + python>=3.8 + pytorch(GPU)
 While the code is theoretically compatible with Windows, we highly recommend running it on a Linux system to ensure consistent results.
 
 ## Datasets and Pretrained models
-- There are only two examples here, please download all data from [here](XXXXXXXXXXXXXXXXXX).
+- There are only two examples here, please download other [data](XXXXXXXXXXXXXXXXXX) as needed all data.
 
 Scenarios information obtained from [OpenStreetMap](https://www.openstreetmap.org/). The TSWS are constructed by [Ray Tracing of Matlab](https://www.mathworks.com/help/comm/ref/rfprop.raytracing.html). 
 
