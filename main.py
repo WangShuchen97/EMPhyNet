@@ -7,8 +7,6 @@ import torchvision.transforms as transforms
 import torch.distributed as dist
 import warnings
 import datetime
-import matplotlib.pyplot as plt
-from PIL import Image
 
 warnings.filterwarnings("ignore")
 
