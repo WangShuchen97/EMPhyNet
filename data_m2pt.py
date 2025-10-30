@@ -1,23 +1,11 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Oct 28 20:06:24 2023
-
-@author: Administrator
-"""
-
-import urllib.request
-import osmnx as ox
 import os
 import numpy as np
 import h5py
 import random
-from PIL import Image
-import matplotlib.pyplot as plt
-from network.utils.tool import make_dir
 import json
 import torch
-import matplotlib.colors as mcolors
 from concurrent.futures import ProcessPoolExecutor,as_completed
+from network.utils.tool import make_dir
 seed=50
 random.seed(seed)
 
