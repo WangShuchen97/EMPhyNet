@@ -62,18 +62,46 @@ Please refer to  `./Visualization_and_MSE.py` for visualization and MSE calculat
 
 ## Results
 
+### Wavefront trajectory
+
+<br>
+<br>
+<div>
+<img src="Figs/Wavefront trajectory.png" width="750px">
+</div>
+<br>
+<br>
+
 ### Scenario 1
 
+<br>
+<br>
 <div>
-<img src="Figs/CIR1.jpg" width="700px">
+<img src="Figs/Scenario 1 real component.png" width="750px">
 </div>
+<br>
+<br>
 
 
 ### Scenario 2
 
+<br>
+<br>
 <div>
-<img src="Figs/CIR2.jpg" width="700px">
+<img src="Figs/Scenario 2 real component.png" width="750px">
 </div>
+<br>
+<br>
+
+### CIRs
+
+<br>
+<br>
+<div>
+<img src="Figs/CIRs.png" width="750px">
+</div>
+<br>
+<br>
 
 ## Citation
 Please cite our paper when you use this code.
