@@ -88,7 +88,7 @@ AE refers to the Absolute Error.
 ### CIRs
 <br>
 <div>
-<img src="Figs/CIR at several points.png" width="750px">
+<img src="Figs/CIRs at several points.png" width="750px">
 </div>
 <br>
 
