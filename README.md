@@ -8,7 +8,7 @@ To characterize the intricate spatiotemporal dynamics, we introduce the Temporal
 <br>
 <br>
 <div>
-<img src="Figs/CIR_TO_Image.jpg" width="700px">
+<img src="Figs/Construction Procedure of the TSWS.png" width="700px">
 </div>
 <br>
 <br>
@@ -16,7 +16,7 @@ Moreover, leveraging first-principles physics, we embed Finite Difference Time D
 <br>
 <br>
 <div>
-<img src="Figs/Architecture.jpg" width="750px">
+<img src="Figs/EMPhyNet Architecture.png" width="750px">
 </div>
 <br>
 <br>
