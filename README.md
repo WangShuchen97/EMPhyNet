@@ -44,15 +44,15 @@ Linux + python>=3.8 + pytorch(GPU)
 While the code is theoretically compatible with Windows, we highly recommend running it on a Linux system to ensure consistent results.
 
 ## Datasets and Pretrained models
-- There are only two examples here, please download other [data](XXXXXXXXXXXXXXXXXX) as needed all data.
-
-Scenarios information obtained from [OpenStreetMap](https://www.openstreetmap.org/). The TSWS are constructed by [Ray Tracing of Matlab](https://www.mathworks.com/help/comm/ref/rfprop.raytracing.html). 
-
-Please unzip `data.zip` and put the folders `input`, `output_rt_32`, 'output_real_32',and `output_imag_32` in `./data`.
+- There are only two examples here, please download other [data](XXXXXXXXXXXXXXXXXX) as needed.
 
 Please unzip `matlab.zip` and put the folders `data`, `map_data`, and 'map_height' in `./matlab`.
 
+Please unzip `data.zip` and put the folders `input`, `output_rt_32`, 'output_real_32',and `output_imag_32` in `./data`.
+
 Please unzip `results.zip` and put all 22 folders in `./results`.
+
+Scenarios information obtained from [OpenStreetMap](https://www.openstreetmap.org/). The TSWS are constructed by [Ray Tracing of Matlab](https://www.mathworks.com/help/comm/ref/rfprop.raytracing.html). 
 
 ## Run
 
