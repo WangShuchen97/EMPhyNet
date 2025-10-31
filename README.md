@@ -20,6 +20,11 @@ Moreover, leveraging first-principles physics, we embed Finite Difference Time D
 </div>
 <br>
 <br>
+<div>
+<img src="Figs/Modules.png" width="750px">
+</div>
+<br>
+<br>
 Together, TSWS and EMPhyNet integrate physics principles with deep learning to accurately reconstruct both amplitude and phase, enabling high-fidelity spatial wireless channel characterization for next-generation communication systems.
 
 ## Requirements
