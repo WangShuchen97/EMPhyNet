@@ -44,15 +44,24 @@ Linux + python>=3.8 + pytorch(GPU)
 While the code is theoretically compatible with Windows, we highly recommend running it on a Linux system to ensure consistent results.
 
 ## Datasets and Pretrained models
+---
 - There are only two examples here, please download other [data](XXXXXXXXXXXXXXXXXX) as needed.
+---
+- Please unzip `matlab.zip` and put the folders `data`, `map_data`, and `map_height` in `./matlab`.
 
-Please unzip `matlab.zip` and put the folders `data`, `map_data`, and 'map_height' in `./matlab`.
+The `matlab.zip` file contains the scenarios data `./matlab/map_data`, which is derived from [OpenStreetMap](https://www.openstreetmap.org/). `./matlab/map_data` is used to construct the TSWS dataset `./matlab/data` generated through [Ray Tracing](https://www.mathworks.com/help/comm/ref/rfprop.raytracing.html) in the script `./matlab/main.m`. Additionally, the file includes processed building distribution data, `./matlab/map_height`.
 
-Please unzip `data.zip` and put the folders `input`, `output_rt_32`, 'output_real_32',and `output_imag_32` in `./data`.
+- Please unzip `data.zip` and put the folders `input`, `output_rt_32`, 'output_real_32',and `output_imag_32` in `./data`. 
 
-Please unzip `results.zip` and put all 22 folders in `./results`.
+The `data.zip` file consists of datasets for training and testing the EMPhyNet model, which are compiled by './data_m2pt.py' from './matlab/data' and './matlab/map_height'. 
 
-Scenarios information obtained from [OpenStreetMap](https://www.openstreetmap.org/). The TSWS are constructed by [Ray Tracing of Matlab](https://www.mathworks.com/help/comm/ref/rfprop.raytracing.html). 
+- Please unzip `checkpoints.zip` and put all 3 `.pt` files in `./results/checkpoints_RT`.
+
+The checkpoints.zip file includes the model parameters for EMPhyNet, which consist of three models for wavefront trajectory, real component, and imaginary component. 
+
+- Please unzip `results.zip` and put all 21 folders in `./results`.
+
+The results of each models are stored in `results.zip`, which can be visualized and used to calculate MSE through the script "Visualized_and_MSE. py".
 
 ## Run
 
