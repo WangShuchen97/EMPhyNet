@@ -62,6 +62,8 @@ Please refer to  `./Visualization_and_MSE.py` for visualization and MSE calculat
 
 ## Results
 
+AE refers to the Absolute Error.
+
 ### Wavefront trajectory
 <br>
 <div>
