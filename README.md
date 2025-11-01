@@ -45,7 +45,7 @@ While the code is theoretically compatible with Windows, we highly recommend run
 
 ## Datasets and Pretrained models
 ---
-- There are only two examples here, please download other [data](XXXXXXXXXXXXXXXXXX) as needed.
+- There are only two examples here, please download other [data](https://zenodo.org/records/17490117) as needed.
 ---
 - Please unzip `matlab.zip` and put the folders `data`, `map_data`, and `map_height` in `./matlab`.
 
