@@ -1,10 +1,10 @@
-# Temporal–Spatial Wavefront Sequence and EMPhyNet
+# Temporal–Spatial Propagation-Front Sequence and EMPhyNet
 
 ## Introduction
-In wireless communications, interactions of electromagnetic (EM) waves with environmental scatterers lead to multipath propagation, which underpins the spatial multiplexing capabilities of advanced technologies such as large-scale Multiple-Input Multiple-Output (MIMO), beamforming, and Reconfigurable Intelligent Surfaces (RIS). 
+In wireless communications, interactions of electromagnetic (EM) waves with environmental scatterers lead to multipath propagation, which underpins the spatial multiplexing capabilities of advanced technologies such as large-scale Multiple-Input Multiple-Output (MIMO), beamforming, and Reconfigurable Intelligent Surfaces (RIS). However, traditional methods are limited to single-link channel estimation and fail to fully exploit the physical principles of spatial multipath transmission and environmental interactions.
 <br>
 <br>
-To characterize the intricate spatiotemporal dynamics, we introduce the Temporal–Spatial Wavefront Sequence (TSWS) to represent the spatial Channel Impulse Response (CIR) and construct a large-scale TSWS simulation dataset spanning 1,075 real-world environments via Ray Tracing (RT), providing a unified foundation for comprehensive channel modeling and transmission research. 
+To characterize the intricate spatiotemporal transmission characteristics, we introduce the Temporal–Spatial Propagation-Front Sequence (TSPFS) to represent the spatial Channel Impulse Response (CIR) and construct a large-scale TSPFS simulated dataset spanning 1,075 real-world environments via Ray Tracing (RT), providing a unified foundation for comprehensive channel modeling and transmission research.
 <br>
 <br>
 <div>
@@ -12,7 +12,7 @@ To characterize the intricate spatiotemporal dynamics, we introduce the Temporal
 </div>
 <br>
 <br>
-Moreover, leveraging first-principles physics, we embed Finite Difference Time Domain (FDTD) iterative framework, a full-wave method for solving Maxwell’s equations, into our proposed EM Physics-Informed Network (EMPhyNet), directly simulating TSWS. The EMPhyNet effectively learns spatial propagation patterns such as direct paths, reflections, amplitude decay, and phase variations, achieving NRMSE and improved masked NRMSE of approximately 0.073 and 0.11. Evaluation of variant models shows that those without explicit Maxwell propagation priors fail to capture meaningful signal features.
+Leveraging the first-principles physics, we embed Finite Difference Time Domain (FDTD) iterative framework, a full-wave method for solving Maxwell’s equations, into our proposed EM Physics-Informed Network (EMPhyNet), directly obtaining the TSPFS. The EMPhyNet effectively learns spatial propagation patterns such as direct paths, reflections, amplitude decay, and most importantly, the phase variations, achieving NRMSE and improved masked NRMSE of approximately 0.073 and 0.11. Evaluation of variant models shows that those without explicit Maxwell propagation priors fail to capture meaningful signal features.
 <br>
 <br>
 <div>
@@ -25,7 +25,7 @@ Moreover, leveraging first-principles physics, we embed Finite Difference Time D
 </div>
 <br>
 <br>
-Together, TSWS and EMPhyNet integrate physics principles with deep learning to accurately reconstruct both amplitude and phase, enabling high-fidelity spatial wireless channel characterization for next-generation communication systems.
+Together, TSPFS and EMPhyNet integrate physics principles with deep learning to accurately reconstruct both amplitude and phase, enabling high-fidelity spatial wireless channel characterization for next-generation communication systems.
 
 ## Requirements
 
@@ -49,7 +49,7 @@ While the code is theoretically compatible with Windows, we highly recommend run
 ---
 - Please unzip `matlab.zip` and put the folders `data`, `map_data`, and `map_height` in `./matlab`.
 
-The `matlab.zip` file contains the scenarios data `./matlab/map_data`, which is derived from [OpenStreetMap](https://www.openstreetmap.org/). `./matlab/map_data` is used to construct the TSWS dataset `./matlab/data` generated through [Ray Tracing](https://www.mathworks.com/help/comm/ref/rfprop.raytracing.html) in the script `./matlab/main.m`. Additionally, the file includes processed building distribution data, `./matlab/map_height`.
+The `matlab.zip` file contains the scenarios data `./matlab/map_data`, which is derived from [OpenStreetMap](https://www.openstreetmap.org/). `./matlab/map_data` is used to construct the TSPFS dataset `./matlab/data` generated through [Ray Tracing](https://www.mathworks.com/help/comm/ref/rfprop.raytracing.html) in the script `./matlab/main.m`. Additionally, the file includes processed building distribution data, `./matlab/map_height`.
 
 - Please unzip `data.zip` and put the folders `input`, `output_rt_32`, 'output_real_32',and `output_imag_32` in `./data`. 
 
@@ -57,7 +57,7 @@ The `data.zip` file consists of datasets for training and testing the EMPhyNet m
 
 - Please unzip `checkpoints.zip` and put all 3 `.pt` files in `./results/checkpoints_RT`.
 
-The checkpoints.zip file includes the model parameters for EMPhyNet, which consist of three models for wavefront trajectory, real component, and imaginary component. 
+The checkpoints.zip file includes the model parameters for EMPhyNet, which consist of three models for propagation-front trajectory, real component, and imaginary component. 
 
 - Please unzip `results.zip` and put all 21 folders in `./results`.
 
@@ -73,7 +73,7 @@ Please refer to  `./Visualization_and_MSE.py` for visualization and MSE calculat
 
 AE refers to the Absolute Error.
 
-### Wavefront trajectory
+### Propagation-Front Trajectory
 <br>
 <div>
 <img src="Figs/Wavefront trajectory.png" width="750px">
