@@ -8,7 +8,7 @@ To characterize the intricate spatiotemporal transmission characteristics, we in
 <br>
 <br>
 <div>
-<img src="Figs/Construction Procedure of the TSWS.png" width="700px">
+<img src="Figs/Construction Procedure of the TSPFS.png" width="700px">
 </div>
 <br>
 <br>
@@ -76,7 +76,7 @@ AE refers to the Absolute Error.
 ### Propagation-Front Trajectory
 <br>
 <div>
-<img src="Figs/Wavefront trajectory.png" width="750px">
+<img src="Figs/Propagation-Front trajectory.png" width="750px">
 </div>
 <br>
 
