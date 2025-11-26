@@ -158,8 +158,12 @@ def Visualization(name,plot_i,plot_j,mode='rt'):
     for m in range(plot_i-1, plot_i+2):        # i-1, i, i+1
         for n in range(plot_j-1, plot_j+2):    # j-1, j, j+1
             plt.figure(dpi=1200, figsize=(6, 3))
-            plt.plot(delay,fading_base[0, :, m, n]* times/100,'-', alpha=0.8,color='Black', linewidth=1.8, label='Baseline')
-            plt.plot(delay,fading_result[0, :, m, n]* times/100,'--', alpha=0.8,color='red', linewidth=1.2, label='EMPhyNet')
+            # plt.plot(delay,fading_base[0, :, m, n]* times/100,'-', alpha=0.8,color='Black', linewidth=1.8, label='Baseline')
+            # plt.plot(delay,fading_result[0, :, m, n]* times/100,'--', alpha=0.8,color='red', linewidth=1.2, label='EMPhyNet')
+            plt.plot(delay,fading_base[0, :, m, n]* times/100,'-', alpha=0.8,color='Black', linewidth=2, label='Baseline',
+                     marker='x', markersize=6, markerfacecolor='none', markeredgewidth=1)
+            plt.plot(delay,fading_result[0, :, m, n]* times/100,'--', alpha=0.8,color='red', linewidth=1.2, label='EMPhyNet',
+                     marker='o', markersize=5, markerfacecolor='none', markeredgewidth=0.8)
     
             if 'rt' in output_dir_result:
                 plt.ylim(-0.1, 1)
@@ -389,4 +393,5 @@ if __name__ == "__main__":
         MSE(in_dir,base_out_dir,out_dir)
 
         
+
 
