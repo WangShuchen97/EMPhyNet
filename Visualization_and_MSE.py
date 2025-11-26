@@ -259,6 +259,7 @@ def Visualization(name,plot_i,plot_j,mode='rt'):
         plt.show()
         
 
+
 def MSE(in_dir,base_out_dir,out_dir):
     num=32
     dir='./results'
@@ -311,8 +312,10 @@ def MSE(in_dir,base_out_dir,out_dir):
             NRMSE+=(torch.mean(diff)).item()
 
             temp = torch.mean(diff, dim=(2, 3))
-            
-            NRMSE_per_img += temp.squeeze(0).cpu().numpy()
+            temp = temp.squeeze(0).cpu().numpy()
+            temp = np.cumsum(temp)
+            for t in range(len(temp)):
+                NRMSE_per_img[t] += temp[t]/(t+1)
 
 
 
@@ -320,21 +323,24 @@ def MSE(in_dir,base_out_dir,out_dir):
             diff = (data - base_data)**2
             diff = diff*mask
             
-            numerator=diff.sum(dim=(2,3))
-            denominator=mask.sum(dim=(2,3))
 
-            for t in range(numerator.shape[1]):
-                if denominator[0,t]!=0:
-                    NRMSE_MASK_per_img[t]+=numerator[0,t]/denominator[0,t]
             
             if mask.sum().item()!=0:
                 NRMSE_MASK+=diff.sum().item() / mask.sum().item()
-
+              
+            numerator=diff.sum(dim=(2,3))
+            denominator=mask.sum(dim=(2,3))
+            
+            denominator=denominator.squeeze(0).cpu().numpy()
+            denominator=np.cumsum(denominator)
+            
+            numerator=numerator.squeeze(0).cpu().numpy()
+            numerator=np.cumsum(numerator)
+            for t in range(len(numerator)):
+                if denominator[t]!=0:
+                    NRMSE_MASK_per_img[t]+=numerator[t]/denominator[t]
+            
     print(max_value,min_value)
-
-    for t in range(1, len(NRMSE_per_img)):
-        NRMSE_per_img[t] = (NRMSE_per_img[t] + t * NRMSE_per_img[t-1]) / (t + 1)
-        NRMSE_MASK_per_img[t] = (NRMSE_MASK_per_img[t] + t * NRMSE_MASK_per_img[t-1]) / (t + 1)
 
     NRMSE=np.sqrt(NRMSE/len(out_dir_list))/(max_value-min_value)
     NRMSE_MASK=np.sqrt(NRMSE_MASK/len(out_dir_list))/(max_value-min_value)
@@ -357,6 +363,7 @@ def MSE(in_dir,base_out_dir,out_dir):
             f.write("NRMSE_MASK   "+str(t)+"     "+out_dir+"  "+str(NRMSE_MASK_per_img[t])+ "\n")
 
     return
+    
     
 if __name__ == "__main__":
     name="data_135_-0.305625,51.5263,-0.3049,51.52675.pt"
@@ -393,5 +400,6 @@ if __name__ == "__main__":
         MSE(in_dir,base_out_dir,out_dir)
 
         
+
 
 
