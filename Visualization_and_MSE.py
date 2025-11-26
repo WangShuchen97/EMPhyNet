@@ -158,12 +158,13 @@ def Visualization(name,plot_i,plot_j,mode='rt'):
     for m in range(plot_i-1, plot_i+2):        # i-1, i, i+1
         for n in range(plot_j-1, plot_j+2):    # j-1, j, j+1
             plt.figure(dpi=1200, figsize=(6, 3))
-            # plt.plot(delay,fading_base[0, :, m, n]* times/100,'-', alpha=0.8,color='Black', linewidth=1.8, label='Baseline')
-            # plt.plot(delay,fading_result[0, :, m, n]* times/100,'--', alpha=0.8,color='red', linewidth=1.2, label='EMPhyNet')
             plt.plot(delay,fading_base[0, :, m, n]* times/100,'-', alpha=0.8,color='Black', linewidth=2, label='Baseline',
                      marker='x', markersize=6, markerfacecolor='none', markeredgewidth=1)
             plt.plot(delay,fading_result[0, :, m, n]* times/100,'--', alpha=0.8,color='red', linewidth=1.2, label='EMPhyNet',
                      marker='o', markersize=5, markerfacecolor='none', markeredgewidth=0.8)
+            
+            #plt.plot(delay,fading_base[0, :, m, n]* times/100,'-', alpha=0.8,color='Black', linewidth=1.8, label='Baseline')
+            #plt.plot(delay,fading_result[0, :, m, n]* times/100,'--', alpha=0.8,color='red', linewidth=1.2, label='EMPhyNet')
     
             if 'rt' in output_dir_result:
                 plt.ylim(-0.1, 1)
@@ -340,6 +341,7 @@ def MSE(in_dir,base_out_dir,out_dir):
                 if denominator[t]!=0:
                     NRMSE_MASK_per_img[t]+=numerator[t]/denominator[t]
             
+
     print(max_value,min_value)
 
     NRMSE=np.sqrt(NRMSE/len(out_dir_list))/(max_value-min_value)
@@ -363,6 +365,136 @@ def MSE(in_dir,base_out_dir,out_dir):
             f.write("NRMSE_MASK   "+str(t)+"     "+out_dir+"  "+str(NRMSE_MASK_per_img[t])+ "\n")
 
     return
+    
+def Fig7(file_path):
+    
+
+    plot_data={'NRMSE':{},'NRMSE_MASK':{}}
+
+    model=['RT','RT_withoutskip','RT_U_Net','RT_VAE','RT_DeepLab','RT_ViT','U_Net']
+
+    for i in model:
+        plot_data['NRMSE_MASK'][i]={}
+        plot_data['NRMSE_MASK'][i]['rt']=[0 for _ in range(32)]
+        plot_data['NRMSE_MASK'][i]['real']=[0 for _ in range(32)]
+        plot_data['NRMSE_MASK'][i]['imag']=[0 for _ in range(32)]
+        plot_data['NRMSE'][i]={}
+        plot_data['NRMSE'][i]['rt']=[0 for _ in range(32)]
+        plot_data['NRMSE'][i]['real']=[0 for _ in range(32)]
+        plot_data['NRMSE'][i]['imag']=[0 for _ in range(32)]
+
+
+    with open(file_path, 'r', encoding='utf-8') as f:
+        line = f.readline()
+        while line:
+            #print(line.strip())  # 去掉换行符
+            line = f.readline()
+            parts = line.split()
+            if len(parts)>0:
+                if 'rt' in parts[2]:
+                    temp='rt'
+                if 'real' in parts[2]:
+                    temp='real'
+                if 'imag' in parts[2]:
+                    temp='imag'
+            
+                for i in model:
+                    if i+'_32' in parts[2]:
+                        model_name=i
+                        break
+                
+                plot_data[parts[0]][model_name][temp][int(parts[1])]=float(parts[-1])
+            
+
+    model_plot=['RT','RT_withoutskip','RT_U_Net','U_Net']
+
+
+    delay_num = 32
+    delay_interval = 0.5e-8
+    delay = [delay_interval * i for i in range(delay_num)] 
+
+
+
+
+    plt.figure(dpi=1200,figsize=(10, 5))
+    plt.plot(delay,plot_data['NRMSE']['U_Net']['real'], color=(78/255, 116/255, 179/255),
+             label='U_Net', linewidth=2.5,marker='x',markersize=6,markerfacecolor='none')
+    plt.plot(delay,plot_data['NRMSE']['RT_U_Net']['real'], color=(251/255,151/255,128/255),
+             label='EMPhyNet–U-Net', linewidth=2.5,marker='^',markersize=6,markerfacecolor='none')
+    plt.plot(delay,plot_data['NRMSE']['RT_withoutskip']['real'], color=(150/255, 209/255, 223/255),
+             label='EMPhyNet w/o $r(t-1)$', linewidth=2.5,marker='d',markersize=6,markerfacecolor='none')
+    plt.plot(delay,plot_data['NRMSE']['RT']['real'], color=(148/255,77/255,85/255),
+             label='EMPhyNet', linewidth=2.5,marker='o',markersize=6,markerfacecolor='none')
+    # plt.ylabel("NRMSE")
+    # plt.legend()
+    # plt.grid(True)
+
+    # plt.tight_layout()
+    plt.ylim(0,0.12)
+    plt.show()
+
+
+
+
+    plt.figure(dpi=1200,figsize=(10, 5))
+
+
+
+    plt.plot(delay,plot_data['NRMSE']['U_Net']['imag'], color=(78/255, 116/255, 179/255),
+             label='U_Net', linewidth=2.5,marker='x',markersize=6,markerfacecolor='none')
+    plt.plot(delay,plot_data['NRMSE']['RT_U_Net']['imag'], color=(251/255,151/255,128/255),
+             label='EMPhyNet–U-Net', linewidth=2.5,marker='^',markersize=6,markerfacecolor='none')
+    plt.plot(delay,plot_data['NRMSE']['RT_withoutskip']['imag'], color=(150/255, 209/255, 223/255),
+             label='EMPhyNet w/o $r(t-1)$', linewidth=2.5,marker='d',markersize=6,markerfacecolor='none')
+    plt.plot(delay,plot_data['NRMSE']['RT']['imag'], color=(148/255,77/255,85/255),
+             label='EMPhyNet', linewidth=2.5,marker='o',markersize=6,markerfacecolor='none')
+    # plt.ylabel("NRMSE")
+    # plt.legend()
+    plt.ylim(0,0.12)
+    # plt.grid(True)
+
+    # plt.tight_layout()
+    plt.show()
+
+
+
+
+    plt.figure(dpi=1200,figsize=(10, 5))
+    plt.plot(delay,plot_data['NRMSE_MASK']['U_Net']['real'], color=(78/255, 116/255, 179/255),
+             label='U_Net', linewidth=2.5,marker='x',markersize=6,markerfacecolor='none')
+    plt.plot(delay,plot_data['NRMSE_MASK']['RT_U_Net']['real'], color=(251/255,151/255,128/255),
+             label='EMPhyNet–U-Net', linewidth=2.5,marker='^',markersize=6,markerfacecolor='none')
+    plt.plot(delay,plot_data['NRMSE_MASK']['RT_withoutskip']['real'], color=(150/255, 209/255, 223/255),
+             label='EMPhyNet w/o $r(t-1)$', linewidth=2.5,marker='d',markersize=6,markerfacecolor='none')
+    plt.plot(delay,plot_data['NRMSE_MASK']['RT']['real'], color=(148/255,77/255,85/255),
+             label='EMPhyNet', linewidth=2.5,marker='o',markersize=6,markerfacecolor='none')
+    # plt.ylabel("M-NRMSE")
+    # plt.legend()
+    # plt.grid(True)
+
+    # plt.tight_layout()
+    plt.ylim(0,0.35)
+    plt.show()
+
+
+
+    plt.figure(dpi=1200,figsize=(10, 5))
+    plt.plot(delay,plot_data['NRMSE_MASK']['U_Net']['imag'], color=(78/255, 116/255, 179/255),
+             label='U_Net', linewidth=2.5,marker='x',markersize=6,markerfacecolor='none')
+    plt.plot(delay,plot_data['NRMSE_MASK']['RT_U_Net']['imag'], color=(251/255,151/255,128/255),
+             label='EMPhyNet–U-Net', linewidth=2.5,marker='^',markersize=6,markerfacecolor='none')
+    plt.plot(delay,plot_data['NRMSE_MASK']['RT_withoutskip']['imag'], color=(150/255, 209/255, 223/255),
+             label='EMPhyNet w/o $r(t-1)$', linewidth=2.5,marker='d',markersize=6,markerfacecolor='none')
+    plt.plot(delay,plot_data['NRMSE_MASK']['RT']['imag'], color=(148/255,77/255,85/255),
+             label='EMPhyNet', linewidth=2.5,marker='o',markersize=6,markerfacecolor='none')
+    # plt.ylabel("M-NRMSE")
+    # plt.legend()
+    # plt.grid(True)
+
+    # plt.tight_layout()
+    plt.ylim(0,0.35)
+    plt.show()
+    return 0
     
     
 if __name__ == "__main__":
@@ -399,7 +531,5 @@ if __name__ == "__main__":
         out_dir='./results/results_output_imag_'+i+'_32'
         MSE(in_dir,base_out_dir,out_dir)
 
-        
-
-
+    Fig7("./results/MSE_per_img.log")
 
