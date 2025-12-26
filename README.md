@@ -1,18 +1,19 @@
-# Temporal–Spatial Propagation-Front Sequence and EMPhyNet
+# Temporal–Spatial Wavefront Sequence and EMPhyNet
 
 ## Introduction
-In wireless communications, interactions of electromagnetic (EM) waves with environmental scatterers lead to multipath propagation, which underpins the spatial multiplexing capabilities of advanced technologies such as large-scale Multiple-Input Multiple-Output (MIMO), beamforming, and Reconfigurable Intelligent Surfaces (RIS). However, traditional methods are limited to single-link channel estimation and fail to fully exploit the physical principles of spatial multipath transmission and environmental interactions.
+In wireless communications, interactions of electromagnetic (EM) waves with environmental scatterers lead to multipath propagation, which underpins the spatial multiplexing capabilities of advanced technologies such as large-scale Multiple-Input Multiple-Output (MIMO), beamforming, and Reconfigurable Intelligent Surfaces (RIS). However, the efficiency of these novel systems essentially rely on the accurate understanding of the multipath fading channel, while the capability of traditional channel modelling methods are limited to single-link channel estimation and fail to fully exploit the physical principles of spatial multipath transmission and environmental interactions. 
 <br>
 <br>
-To characterize the intricate spatiotemporal transmission characteristics, we introduce the Temporal–Spatial Propagation-Front Sequence (TSPFS) to represent the spatial Channel Impulse Response (CIR) and construct a large-scale TSPFS simulated dataset spanning 1,075 real-world environments via Ray Tracing (RT), providing a unified foundation for comprehensive channel modeling and transmission research.
+We reveal that spatially distributed channel impulse responses (CIRs), when considered jointly, form spatiotemporal wavefronts that govern multipath signal propagation. Building on this physical insight, we introduce the Temporal–Spatial Wavefront Sequence (TSWS) model as a unified representation of spatial CIR evolution, and construct a large-scale TSWS dataset using ray tracing (RT) across 1,075 real-world environments, providing a foundation for systematic channel modeling and transmission-oriented research.
 <br>
 <br>
 <div>
-<img src="Figs/Construction Procedure of the TSPFS.png" width="700px">
+<img src="Figs/Construction Procedure of the TSWS.png" width="700px">
 </div>
 <br>
 <br>
-Leveraging the first-principles physics, we embed Finite Difference Time Domain (FDTD) iterative framework, a full-wave method for solving Maxwell’s equations, into our proposed EM Physics-Informed Network (EMPhyNet), directly obtaining the TSPFS. The EMPhyNet effectively learns spatial propagation patterns such as direct paths, reflections, amplitude decay, and most importantly, the phase variations, achieving NRMSE and improved masked NRMSE of approximately 0.073 and 0.11. Evaluation of variant models shows that those without explicit Maxwell propagation priors fail to capture meaningful signal features.
+
+In addition, leveraging the first-principles in physics, we embed Finite Difference Time Domain (FDTD) iterative framework, a full-wave method for solving Maxwell’s equations, into our proposed EM Physics-Informed Network (EMPhyNet), enabling near-real-time, millisecond-level inference of TSWS. The EMPhyNet effectively learns spatial propagation patterns such as direct paths, reflections, amplitude decay, and most importantly, the phase variations, achieving Normalized Root Mean Square Error (NRMSE) and improved masked NRMSE of approximately 0.073 and 0.11, corresponding to 29.5% and 28.0% improvements over the U-shaped Network (U-Net) baseline. Evaluation of variant models shows that those without explicit Maxwell propagation priors fail to capture meaningful signal features. 
 <br>
 <br>
 <div>
@@ -25,7 +26,7 @@ Leveraging the first-principles physics, we embed Finite Difference Time Domain 
 </div>
 <br>
 <br>
-Together, TSPFS and EMPhyNet integrate physics principles with deep learning to accurately reconstruct both amplitude and phase, enabling high-fidelity spatial wireless channel characterization for next-generation communication systems.
+Together, TSWS and EMPhyNet integrate physics principles with deep learning to accurately reconstruct both amplitude and phase, enabling high-fidelity spatial wireless channel characterization for next-generation communication systems.
 
 ## Requirements
 
@@ -49,7 +50,7 @@ While the code is theoretically compatible with Windows, we highly recommend run
 ---
 - Please unzip `matlab.zip` and put the folders `data`, `map_data`, and `map_height` in `./matlab`.
 
-The `matlab.zip` file contains the scenarios data `./matlab/map_data`, which is derived from [OpenStreetMap](https://www.openstreetmap.org/). `./matlab/map_data` is used to construct the TSPFS dataset `./matlab/data` generated through [Ray Tracing](https://www.mathworks.com/help/comm/ref/rfprop.raytracing.html) in the script `./matlab/main.m`. Additionally, the file includes processed building distribution data, `./matlab/map_height`.
+The `matlab.zip` file contains the scenarios data `./matlab/map_data`, which is derived from [OpenStreetMap](https://www.openstreetmap.org/). `./matlab/map_data` is used to construct the TSWS dataset `./matlab/data` generated through [Ray Tracing](https://www.mathworks.com/help/comm/ref/rfprop.raytracing.html) in the script `./matlab/main.m`. Additionally, the file includes processed building distribution data, `./matlab/map_height`.
 
 - Please unzip `data.zip` and put the folders `input`, `output_rt_32`, 'output_real_32',and `output_imag_32` in `./data`. 
 
@@ -57,11 +58,11 @@ The `data.zip` file consists of datasets for training and testing the EMPhyNet m
 
 - Please unzip `checkpoints.zip` and put all 3 `.pt` files in `./results/checkpoints_RT`.
 
-The checkpoints.zip file includes the model parameters for EMPhyNet, which consist of three models for propagation-front trajectory, real component, and imaginary component. 
+The checkpoints.zip file includes the model parameters for EMPhyNet, which consist of three models for wavefront trajectory, real component, and imaginary component. 
 
 - Please unzip `results.zip` and put all 21 folders in `./results`.
 
-The results of each models are stored in `results.zip`, which can be visualized and used to calculate MSE through the script "Visualized_and_MSE. py".
+The results of each models are stored in `results.zip`, which can be visualized and used to calculate MSE through the script "Visualized_and_MSE.py".
 
 ## Run
 
@@ -73,10 +74,10 @@ Please refer to  `./Visualization_and_MSE.py` for visualization and MSE calculat
 
 AE refers to the Absolute Error.
 
-### Propagation-Front Trajectory
+### Wavefront Trajectory
 <br>
 <div>
-<img src="Figs/Propagation-Front trajectory.png" width="750px">
+<img src="Figs/Wavefront trajectory.png" width="750px">
 </div>
 <br>
 
