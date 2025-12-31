@@ -41,6 +41,7 @@ Linux + python>=3.8 + pytorch(GPU)
 - Pillow==10.2.0
 - scikit-learn==1.3.2
 - opencv-python==4.11.0.86
+- torchsummary==1.5.1
 
 While the code is theoretically compatible with Windows, we highly recommend running it on a Linux system to ensure consistent results.
 
