@@ -11,7 +11,7 @@ import importlib
 import torch
 import torch.nn as nn
 from torch.optim import Adam,SGD
-from torchviz import make_dot
+# from torchviz import make_dot
 from torchsummary import summary
 from torch.optim.lr_scheduler import ReduceLROnPlateau,CyclicLR
 
@@ -98,10 +98,10 @@ class Model(object):
     
 
     def net_structure(self,input_size=(1,512,512),mode=None):
-        if mode=="torchviz":
-            x = torch.randn(input_size).to(self.configs.device)
-            y = self.network(x)
-            make_dot(y, params=dict(list(self.network.named_parameters()))).render("SimpleNet", format="png")
+        # if mode=="torchviz":
+        #     x = torch.randn(input_size).to(self.configs.device)
+        #     y = self.network(x)
+        #     make_dot(y, params=dict(list(self.network.named_parameters()))).render("SimpleNet", format="png")
         if mode=="torchsummary":
             #summary(self.network, input_size=(self.configs.input_channel,self.configs.input_height,self.configs.input_width), batch_size=-1, device="cpu")
             summary(self.network, input_size=tuple(input_size[1:]), batch_size=-1, device='cuda')
@@ -256,3 +256,4 @@ class Model(object):
 
 
     
+
