@@ -1,6 +1,4 @@
 # Temporal–Spatial Wavefront Sequence and EMPhyNet
-
-## Overview
 In wireless communications, interactions of electromagnetic (EM) waves with environmental scatterers lead to multipath propagation, which underpins the spatial multiplexing capabilities of advanced technologies such as large-scale Multiple-Input Multiple-Output (MIMO), beamforming, and Reconfigurable Intelligent Surfaces (RIS). However, the efficiency of these novel systems essentially rely on the accurate understanding of the multipath fading channel, while the capability of traditional channel modelling methods are limited to single-link channel estimation and fail to fully exploit the physical principles of spatial multipath transmission and environmental interactions. 
 <br>
 <br>
