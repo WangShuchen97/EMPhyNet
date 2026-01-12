@@ -8,7 +8,7 @@ We reveal that spatially distributed channel impulse responses (CIRs), when cons
 <br>
 <br>
 <div>
-<img src="Figs/Construction Procedure of the TSWS.png" width="700px">
+<img src="Figs/Construction Procedure of the TSWS.png" width="800px">
 </div>
 <br>
 <br>
@@ -17,7 +17,7 @@ In addition, leveraging the first-principles in physics, we embed Finite Differe
 <br>
 <br>
 <div>
-<img src="Figs/EMPhyNet Architecture.png" width="750px">
+<img src="Figs/EMPhyNet Architecture.png" width="800px">
 </div>
 <br>
 <br>
