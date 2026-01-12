@@ -1,29 +1,13 @@
 # Temporal–Spatial Wavefront Sequence and EMPhyNet
 
-## Introduction
+## Overview
 In wireless communications, interactions of electromagnetic (EM) waves with environmental scatterers lead to multipath propagation, which underpins the spatial multiplexing capabilities of advanced technologies such as large-scale Multiple-Input Multiple-Output (MIMO), beamforming, and Reconfigurable Intelligent Surfaces (RIS). However, the efficiency of these novel systems essentially rely on the accurate understanding of the multipath fading channel, while the capability of traditional channel modelling methods are limited to single-link channel estimation and fail to fully exploit the physical principles of spatial multipath transmission and environmental interactions. 
 <br>
 <br>
 We reveal that spatially distributed channel impulse responses (CIRs), when considered jointly, form spatiotemporal wavefronts that govern multipath signal propagation. Building on this physical insight, we introduce the Temporal–Spatial Wavefront Sequence (TSWS) model as a unified representation of spatial CIR evolution, and construct a large-scale TSWS dataset using ray tracing (RT) across 1,075 real-world environments, providing a foundation for systematic channel modeling and transmission-oriented research.
 <br>
 <br>
-<div>
-<img src="Figs/Construction Procedure of the TSWS.png" width="800px">
-</div>
-<br>
-<br>
-
 In addition, leveraging the first-principles in physics, we embed Finite Difference Time Domain (FDTD) iterative framework, a full-wave method for solving Maxwell’s equations, into our proposed EM Physics-Informed Network (EMPhyNet), enabling near-real-time, millisecond-level inference of TSWS. The EMPhyNet effectively learns spatial propagation patterns such as direct paths, reflections, amplitude decay, and most importantly, the phase variations, achieving Normalized Root Mean Square Error (NRMSE) and improved masked NRMSE of approximately 0.073 and 0.11, corresponding to 29.5% and 28.0% improvements over the U-shaped Network (U-Net) baseline. Evaluation of variant models shows that those without explicit Maxwell propagation priors fail to capture meaningful signal features. 
-<br>
-<br>
-<div>
-<img src="Figs/EMPhyNet Architecture.png" width="800px">
-</div>
-<br>
-<br>
-<div>
-<img src="Figs/Modules.png" width="750px">
-</div>
 <br>
 <br>
 Together, TSWS and EMPhyNet integrate physics principles with deep learning to accurately reconstruct both amplitude and phase, enabling high-fidelity spatial wireless channel characterization for next-generation communication systems.
@@ -70,38 +54,6 @@ The results of each models are stored in `results.zip`, which can be visualized 
 Please refer to  `./run.sh` and `./main.py` for training and testing.
 
 Please refer to  `./Visualization_and_MSE.py` for visualization and MSE calculation.
-
-## Results
-
-AE refers to the Absolute Error.
-
-### Wavefront Trajectory
-<br>
-<div>
-<img src="Figs/Wavefront trajectory.png" width="750px">
-</div>
-<br>
-
-### Scenario 1 (Real Part)
-<br>
-<div>
-<img src="Figs/Scenario 1 real component.png" width="750px">
-</div>
-<br>
-
-### Scenario 2 (Real Part)
-<br>
-<div>
-<img src="Figs/Scenario 2 real component.png" width="750px">
-</div>
-<br>
-
-### CIRs
-<br>
-<div>
-<img src="Figs/CIRs at several points.png" width="750px">
-</div>
-<br>
 
 ## Citation
 Please cite our paper when you use this code.
