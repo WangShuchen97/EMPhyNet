@@ -25,8 +25,6 @@ Linux + python>=3.8 + pytorch(GPU)
 - opencv-python==4.11.0.86
 - torchsummary==1.5.1
 
-While the code is theoretically compatible with Windows, we highly recommend running it on a Linux system to ensure consistent results.
-
 ## Datasets and Pretrained models
 ---
 - There are only two examples here, please download other [data](https://zenodo.org/records/17490117) as needed.
